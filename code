@@ -1,0 +1,45 @@
+import java.util.Scanner;
+public class solution{
+    
+    static boolean findAnagram(String a, String b){
+       boolean confirm = false; 
+       int counter = 0;
+       char[] firstWord = a.toLowerCase().toCharArray();
+       char[] Anagram = b.toLowerCase().toCharArray();
+      
+      // confirms that the two words are of equal sizes
+      if(firstWord.length==Anagram.length){ 
+         
+         //loop that checks an  counts the occurence of same characters in the char arrays
+        for(int i = 0;i!=firstWord.length;i++){
+           for(int j = 0;j!= Anagram.length;j++){
+               //deletes the occurence of a char in anagram array
+               if(firstWord[i]==Anagram[j]){
+                   counter++;
+                   Anagram[j] = ' ';
+                   break;
+               }
+           }
+       }
+      }
+      
+      //compares results to check which return to execute
+      if(counter == firstWord.length){
+          return true;
+      }else{
+          return false;
+      }
+    }
+    
+    public static void main(String args[]){
+        Scanner input = new Scanner (System.in);
+        
+        String firstWord = input.next();
+        String Anagram = input.next();
+        
+        input.close();
+        
+        boolean ret = findAnagram(firstWord,Anagram);
+        System.out.println(ret ? "Anangram":"Not Anagram");
+    }
+}
